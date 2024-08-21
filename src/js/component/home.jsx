@@ -6,7 +6,7 @@ const Home = () => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setCounter(preCounter => preCounter + 1);
+			setCounter(counter => counter + 1);
 		}, 1000);
 		return () => clearInterval(interval)
 	}, []);
