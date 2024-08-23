@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const SecondsCounter = (props) => {
+
     return (
         <div className="container text-center d-flex">
             <div className="bg-dark col-2"><i className="far fa-clock h1 text-white mt-2"></i></div>
