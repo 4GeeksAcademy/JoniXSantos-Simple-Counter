@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {SecondsCounter} from "./SecondsCounter.jsx";
 
 const Home = () => {
 	const [counter, setCounter] = useState(0);
@@ -37,23 +36,19 @@ const Home = () => {
 	}, [counter, alertTime])
 
 	//Variables to stablish each digit of the counter
-	const clock = countUp ? "far fa-clock" : "fas fa-hourglass-start";
 	const one = Math.floor(counter / 1000) % 10;
     const two = Math.floor(counter / 100) % 10;
     const three = Math.floor(counter / 10) % 10;
     const four = Math.floor(counter / 1) % 10;
-
-	//This function will be trigged by clicking on Stop
+	
 	const stopTimer = () => {
 		setRunning(false);
 	}
 
-	//This function will be trigged by clicking on Resume
 	const resumeTimer = () => {
 		setRunning(true);
 	}
 	
-	//This function will be trigged by clicking on Reset
 	const resetTimer = () => {
 		setCounter(0);
 	}
@@ -87,7 +82,14 @@ const Home = () => {
 			<div className={`alert alert-danger ${display && countUp ? '' : 'd-none'}`} role="alert">
   		  		You have reached the time!
 		  	</div>
-			<SecondsCounter icon={clock} digitOne={one} digitTwo={two} digitThree={three} digitFour={four} />
+			<div className="container text-center d-flex">
+            	<div className="bg-dark col-2"><i className={`${countUp ? "far fa-clock" : "fas fa-hourglass-start"} h1 text-white mt-2`}></i></div>
+            	<div className="bg-dark col-2"><p className="h1 text-white mt-1">{one}</p></div>
+            	<div className="bg-dark col-2"><p className="h1 text-white mt-1">{two}</p></div>
+            	<div className="bg-dark col-2"><p className="h1 text-white mt-1">{three}</p></div>
+            	<div className="bg-dark col-2"><p className="h1 text-white mt-1">{four}</p></div>
+            	<div className="bg-dark col-2"><p className="h1 text-white mt-1">seconds</p></div>
+        	</div>
 			<div className="d-flex mt-3">
 				<button type="button" onClick={stopTimer} className="btn btn-danger me-3" disabled={!running ? true : false}>Stop</button>
 				<button type="button" onClick={resumeTimer} className="btn btn-success me-3" disabled={running ? true : false || !countUp && counter == 0 ? true : false}>Resume</button>
